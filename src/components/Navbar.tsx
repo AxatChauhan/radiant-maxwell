@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Feather, ChevronDown, Menu, X, Download } from 'lucide-react';
+import { Feather, ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import { PROFESSOR_INFO } from '../data/professorData';
 
 export type MainTab = 'home' | 'about' | 'research' | 'leadership' | 'initiatives' | 'engagements' | 'resources' | 'updates' | 'contact';
@@ -12,6 +12,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null);
 
   const menuStructure = [
     { id: 'home', label: 'Home' },
@@ -81,7 +82,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
         { id: 'teach-res', label: 'Teaching Resources' },
         { id: 'res-res', label: 'Research Resources' },
         { id: 'ai-ele', label: 'AI & English Language Education' },
-        { id: 'downloads', label: 'Downloads & CV' },
       ]
     },
     {
@@ -103,25 +103,30 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
     setMobileMenuOpen(false);
   };
 
+  const toggleMobileAccordion = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setMobileExpandedSection(mobileExpandedSection === id ? null : id);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-2.5 sm:py-3 flex items-center justify-between">
         
         {/* Brand / Logo */}
         <div 
           onClick={() => handleNavClick('home')}
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group py-1"
         >
-          <div className="w-10 h-10 rounded-full bg-red-900/10 border border-red-900/30 flex items-center justify-center text-red-900 group-hover:bg-red-900 group-hover:text-white transition-all">
-            <Feather className="w-5 h-5" />
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-red-900/10 border border-red-900/30 flex items-center justify-center text-red-900 group-hover:bg-red-900 group-hover:text-white transition-all shrink-0">
+            <Feather className="w-4 h-4 sm:w-5 sm:h-5" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-serif text-lg md:text-xl font-normal tracking-tight text-slate-900">
+            <div className="flex items-center gap-1.5">
+              <span className="font-serif text-base sm:text-lg md:text-xl font-medium tracking-tight text-slate-900 truncate">
                 {PROFESSOR_INFO.name}
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 tracking-wide font-light hidden sm:block">
+            <p className="text-[10px] sm:text-[11px] text-slate-500 tracking-wide font-light hidden sm:block truncate">
               {PROFESSOR_INFO.institution}
             </p>
           </div>
@@ -168,19 +173,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
           ))}
         </nav>
 
-        {/* Action Button & Mobile Toggle */}
+        {/* Mobile Toggle Button */}
         <div className="flex items-center gap-2">
           <button
-            onClick={() => handleNavClick('resources', 'downloads')}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-red-900 hover:text-white text-slate-700 border border-slate-300 text-xs font-medium transition-all"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span>CV Download</span>
-          </button>
-
-          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-all"
+            className="xl:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -190,33 +188,45 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-b border-slate-200 px-4 py-4 max-h-[80vh] overflow-y-auto space-y-3 shadow-xl">
-          {menuStructure.map((item) => (
-            <div key={item.id} className="space-y-1">
-              <button
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full text-left font-serif text-sm font-semibold py-1.5 px-2 rounded-lg flex items-center justify-between ${
-                  activeTab === item.id ? 'bg-red-900 text-white' : 'text-slate-900 hover:bg-slate-100'
-                }`}
-              >
-                <span>{item.label}</span>
-              </button>
-
-              {item.subTabs && (
-                <div className="pl-4 space-y-1 border-l-2 border-slate-200 ml-2">
-                  {item.subTabs.map((sub) => (
+        <div className="xl:hidden bg-white border-b border-slate-200 px-4 py-3 max-h-[82vh] overflow-y-auto space-y-1.5 shadow-2xl animate-fade-in">
+          {menuStructure.map((item) => {
+            const isExpanded = mobileExpandedSection === item.id;
+            return (
+              <div key={item.id} className="rounded-xl overflow-hidden border border-slate-100">
+                <div 
+                  className={`w-full flex items-center justify-between px-3.5 py-3 min-h-[44px] cursor-pointer transition-colors ${
+                    activeTab === item.id ? 'bg-red-900 text-white' : 'bg-slate-50 text-slate-800 hover:bg-slate-100'
+                  }`}
+                  onClick={() => handleNavClick(item.id)}
+                >
+                  <span className="font-serif text-sm font-semibold">{item.label}</span>
+                  {item.subTabs && (
                     <button
-                      key={sub.id}
-                      onClick={() => handleNavClick(item.id, sub.id)}
-                      className="w-full text-left py-1 text-xs text-slate-600 hover:text-red-900 block"
+                      onClick={(e) => toggleMobileAccordion(item.id, e)}
+                      className="p-1 text-inherit hover:opacity-80 shrink-0"
                     >
-                      • {sub.label}
+                      <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                     </button>
-                  ))}
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
+
+                {item.subTabs && isExpanded && (
+                  <div className="bg-slate-50/80 px-4 py-2 space-y-1 border-t border-slate-200/60">
+                    {item.subTabs.map((sub) => (
+                      <button
+                        key={sub.id}
+                        onClick={() => handleNavClick(item.id, sub.id)}
+                        className="w-full text-left py-2 px-2 text-xs text-slate-700 hover:text-red-900 hover:bg-white rounded-lg transition-colors flex items-center justify-between min-h-[38px]"
+                      >
+                        <span>{sub.label}</span>
+                        <ChevronRight className="w-3 h-3 text-slate-400" />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </header>

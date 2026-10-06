@@ -56,16 +56,16 @@ export function App() {
       </main>
 
       {/* Global Footer */}
-      <footer className="max-w-7xl mx-auto px-4 md:px-8 mt-24 pt-8 border-t border-slate-200 space-y-4 text-xs text-slate-500">
+      <footer className="max-w-7xl mx-auto px-4 md:px-8 mt-16 sm:mt-24 pt-8 border-t border-slate-200 space-y-4 text-xs text-slate-500">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
             <Feather className="w-4 h-4 text-red-900 shrink-0" />
             <span className="font-medium text-slate-900">{PROFESSOR_INFO.name}</span>
-            <span>• Assistant Professor • {PROFESSOR_INFO.institution}</span>
+            <span className="text-slate-500">• Assistant Professor • {PROFESSOR_INFO.institution}</span>
           </div>
 
           {/* Social / Research Profile Links */}
-          <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-slate-600">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-[11px] font-mono text-slate-600">
             <a href={`https://orcid.org/${PROFESSOR_INFO.researchProfiles.orcid}`} target="_blank" rel="noreferrer" className="hover:text-red-900 underline flex items-center gap-1">
               ORCID <ExternalLink className="w-3 h-3" />
             </a>
@@ -78,7 +78,7 @@ export function App() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-slate-100 text-[11px] text-slate-400">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-slate-100 text-[11px] text-slate-400 text-center sm:text-left">
           <span>© {new Date().getFullYear()} {PROFESSOR_INFO.name} | All Rights Reserved</span>
           <span>H. M. Patel Institute of English Training & Research, Vallabh Vidyanagar</span>
         </div>

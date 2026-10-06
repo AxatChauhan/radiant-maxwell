@@ -109,7 +109,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({ subSection }) => {
 
         {/* Publications Table */}
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-          <table className="w-full text-left text-xs text-slate-700">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[550px]">
             <thead className="bg-slate-50 text-slate-900 border-b border-slate-200 font-mono text-[11px] uppercase">
               <tr>
                 <th className="py-3 px-4 w-12">#</th>
@@ -189,7 +189,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({ subSection }) => {
 
       {/* 3.5 Research Profiles & Metrics */}
       <section id="profiles" className="space-y-6">
-        <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
+        <div className="pb-2 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
           <h2 className="font-serif text-2xl text-slate-900">Research Profiles & Citation Metrics</h2>
           <span className="text-xs font-mono text-slate-500">Verified Domain: {PROFESSOR_INFO.researchProfiles.verifiedDomain}</span>
         </div>

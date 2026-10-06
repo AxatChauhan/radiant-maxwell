@@ -30,7 +30,7 @@ export const ContactPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         {/* Contact Info Card */}
-        <div className="lg:col-span-5 glass-card rounded-3xl p-8 bg-white border border-slate-200 shadow-2xs space-y-6">
+        <div className="lg:col-span-5 glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white border border-slate-200 shadow-2xs space-y-6">
           <div>
             <h2 className="font-serif text-2xl text-slate-900">{PROFESSOR_INFO.name}</h2>
             <p className="text-xs text-red-900 font-mono font-semibold mt-0.5">{PROFESSOR_INFO.title}</p>
@@ -50,10 +50,10 @@ export const ContactPage: React.FC = () => {
               <Mail className="w-4 h-4 text-red-900 shrink-0 mt-0.5" />
               <div>
                 <strong className="font-medium text-slate-900 block mb-0.5">Official Email:</strong>
-                <a href={`mailto:${PROFESSOR_INFO.officialEmail}`} className="text-red-900 font-mono underline hover:text-red-700 block">
+                <a href={`mailto:${PROFESSOR_INFO.officialEmail}`} className="text-red-900 font-mono underline hover:text-red-700 block break-all">
                   {PROFESSOR_INFO.officialEmail}
                 </a>
-                <span className="text-slate-400 block text-[11px] mt-0.5">Alternate: {PROFESSOR_INFO.alternateEmail}</span>
+                <span className="text-slate-400 block text-[11px] mt-0.5 break-all">Alternate: {PROFESSOR_INFO.alternateEmail}</span>
               </div>
             </div>
 
@@ -61,7 +61,7 @@ export const ContactPage: React.FC = () => {
               <Globe className="w-4 h-4 text-red-900 shrink-0 mt-0.5" />
               <div>
                 <strong className="font-medium text-slate-900 block mb-0.5">Institute Website:</strong>
-                <a href={`https://${PROFESSOR_INFO.instituteWebsite}`} target="_blank" rel="noreferrer" className="text-slate-800 hover:text-red-900 underline block font-mono">
+                <a href={`https://${PROFESSOR_INFO.instituteWebsite}`} target="_blank" rel="noreferrer" className="text-slate-800 hover:text-red-900 underline block font-mono break-all">
                   {PROFESSOR_INFO.instituteWebsite}
                 </a>
               </div>
@@ -74,21 +74,21 @@ export const ContactPage: React.FC = () => {
         </div>
 
         {/* Enquiry Form */}
-        <div className="lg:col-span-7 glass-card rounded-3xl p-8 bg-white border border-slate-200 shadow-2xs">
-          <h3 className="font-serif text-2xl text-slate-900 mb-6">Send an Academic Enquiry</h3>
+        <div className="lg:col-span-7 glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white border border-slate-200 shadow-2xs">
+          <h3 className="font-serif text-xl sm:text-2xl text-slate-900 mb-6">Send an Academic Enquiry</h3>
 
           {submitted ? (
-            <div className="p-8 text-center space-y-4">
+            <div className="p-6 sm:p-8 text-center space-y-4">
               <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-700 mx-auto flex items-center justify-center">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h4 className="font-serif text-2xl text-slate-900">Enquiry Submitted Successfully</h4>
+              <h4 className="font-serif text-xl sm:text-2xl text-slate-900">Enquiry Submitted Successfully</h4>
               <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
                 Thank you, {formData.name}. Your enquiry regarding <span className="font-semibold text-slate-900">"{formData.subject || formData.category}"</span> has been received and forwarded to Dr. Dodiya's email.
               </p>
               <button
                 onClick={() => { setSubmitted(false); setFormData({ name: '', email: '', subject: '', category: 'Academic Inquiry', message: '' }); }}
-                className="mt-4 px-6 py-2 rounded-xl bg-red-900 text-white text-xs font-medium"
+                className="mt-4 px-6 py-2.5 rounded-xl bg-red-900 text-white text-xs font-medium min-h-[44px]"
               >
                 Send Another Message
               </button>
@@ -104,7 +104,7 @@ export const ContactPage: React.FC = () => {
                     placeholder="e.g. Prof. / Dr. / Mr. Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900 min-h-[44px]"
                   />
                 </div>
 
@@ -116,7 +116,7 @@ export const ContactPage: React.FC = () => {
                     placeholder="name@institution.edu"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900 min-h-[44px]"
                   />
                 </div>
               </div>
@@ -127,7 +127,7 @@ export const ContactPage: React.FC = () => {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900 min-h-[44px]"
                   >
                     <option value="Academic Inquiry">Academic Inquiry</option>
                     <option value="Research Collaboration">Research Collaboration</option>
@@ -145,7 +145,7 @@ export const ContactPage: React.FC = () => {
                     placeholder="Enquiry Subject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-900 focus:ring-1 focus:ring-red-900 min-h-[44px]"
                   />
                 </div>
               </div>
@@ -164,7 +164,7 @@ export const ContactPage: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-red-900 hover:bg-red-800 text-white text-xs font-medium shadow-md flex items-center justify-center gap-2 transition-all"
+                className="w-full py-3 rounded-xl bg-red-900 hover:bg-red-800 text-white text-xs font-medium shadow-md flex items-center justify-center gap-2 transition-all min-h-[44px]"
               >
                 <Send className="w-4 h-4" />
                 <span>Submit Enquiry</span>

@@ -17,13 +17,13 @@ export const InitiativesPage: React.FC<InitiativesPageProps> = ({ subSection }) 
       </div>
 
       {/* 5.1 ELEF – English Language Education Forum */}
-      <section id="elef" className="glass-card rounded-3xl p-8 bg-white border border-slate-200 shadow-2xs space-y-4">
-        <div className="flex items-center justify-between">
+      <section id="elef" className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white border border-slate-200 shadow-2xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-red-900">
-            <Layers className="w-5 h-5" />
-            <h2 className="font-serif text-2xl text-slate-900">ELEF – English Language Education Forum</h2>
+            <Layers className="w-5 h-5 shrink-0" />
+            <h2 className="font-serif text-xl sm:text-2xl text-slate-900">ELEF – English Language Education Forum</h2>
           </div>
-          <span className="text-xs font-mono text-red-900 font-bold bg-red-50 px-3 py-1 rounded-full border border-red-200">Role: Convener</span>
+          <span className="text-xs font-mono text-red-900 font-bold bg-red-50 px-3 py-1 rounded-full border border-red-200 self-start sm:self-auto">Role: Convener</span>
         </div>
 
         <p className="text-sm text-slate-700 leading-relaxed font-light">
@@ -38,13 +38,13 @@ export const InitiativesPage: React.FC<InitiativesPageProps> = ({ subSection }) 
       </section>
 
       {/* 5.2 CAIELE – Centre for Artificial Intelligence in English Language Education */}
-      <section id="caiele" className="glass-card rounded-3xl p-8 bg-white border border-slate-200 shadow-2xs space-y-4">
-        <div className="flex items-center justify-between">
+      <section id="caiele" className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white border border-slate-200 shadow-2xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-red-900">
-            <Sparkles className="w-5 h-5" />
-            <h2 className="font-serif text-2xl text-slate-900">CAIELE – Centre for Artificial Intelligence in ELE</h2>
+            <Sparkles className="w-5 h-5 shrink-0" />
+            <h2 className="font-serif text-xl sm:text-2xl text-slate-900">CAIELE – Centre for Artificial Intelligence in ELE</h2>
           </div>
-          <span className="text-xs font-mono text-red-900 font-bold bg-red-50 px-3 py-1 rounded-full border border-red-200">Role: Coordinator</span>
+          <span className="text-xs font-mono text-red-900 font-bold bg-red-50 px-3 py-1 rounded-full border border-red-200 self-start sm:self-auto">Role: Coordinator</span>
         </div>
 
         <p className="text-sm text-slate-700 leading-relaxed font-light">
@@ -86,13 +86,13 @@ export const InitiativesPage: React.FC<InitiativesPageProps> = ({ subSection }) 
       </section>
 
       {/* 5.4 RDC Initiatives */}
-      <section id="rdc-init" className="glass-card rounded-3xl p-8 bg-white border border-slate-200 shadow-2xs space-y-4">
-        <div className="flex items-center justify-between">
+      <section id="rdc-init" className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white border border-slate-200 shadow-2xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-red-900">
-            <ShieldCheck className="w-5 h-5" />
-            <h2 className="font-serif text-2xl text-slate-900">RDC – Research & Development Cell Initiatives</h2>
+            <ShieldCheck className="w-5 h-5 shrink-0" />
+            <h2 className="font-serif text-xl sm:text-2xl text-slate-900">RDC – Research & Development Cell Initiatives</h2>
           </div>
-          <span className="text-xs font-mono text-red-900 font-bold bg-red-50 px-3 py-1 rounded-full border border-red-200">Coordinator</span>
+          <span className="text-xs font-mono text-red-900 font-bold bg-red-50 px-3 py-1 rounded-full border border-red-200 self-start sm:self-auto">Coordinator</span>
         </div>
 
         <p className="text-sm text-slate-700 leading-relaxed font-light">

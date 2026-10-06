@@ -120,12 +120,14 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ subSection }) =>
             {section.deliveredSessions && (
               <div className="p-5 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-3 mt-4">
                 <h4 className="text-xs font-mono uppercase font-semibold text-amber-900">Career & Guidance Sessions Delivered</h4>
-                <div className="space-y-1.5 text-xs">
+                <div className="space-y-2 text-xs">
                   {section.deliveredSessions.map((s, i) => (
-                    <div key={i} className="flex items-center gap-2 text-slate-700">
-                      <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0" />
-                      <span className="font-medium text-slate-900">{s.title}</span>
-                      <span className="text-slate-500">• {s.venue}</span>
+                    <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-slate-700">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0" />
+                        <span className="font-medium text-slate-900">{s.title}</span>
+                      </div>
+                      <span className="text-slate-500 pl-6 sm:pl-0">• {s.venue}</span>
                     </div>
                   ))}
                 </div>

@@ -38,13 +38,13 @@ export const EngagementsPage: React.FC<EngagementsPageProps> = ({ subSection }) 
       {/* Interactive Filter Bar */}
       <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-3">
         <div className="flex items-center gap-2 text-xs font-mono text-slate-700 font-semibold uppercase">
-          <Filter className="w-4 h-4 text-red-900" />
+          <Filter className="w-4 h-4 text-red-900 shrink-0" />
           <span>Filter Academic Engagements by Level & Year</span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 text-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           {/* Level Filter */}
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-slate-500 font-medium">Level:</span>
             {['All', 'State', 'National', 'International'].map(lvl => (
               <button
@@ -62,7 +62,7 @@ export const EngagementsPage: React.FC<EngagementsPageProps> = ({ subSection }) 
           </div>
 
           {/* Year Filter */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 self-start sm:self-auto">
             <span className="text-slate-500 font-medium">Year:</span>
             <select
               value={selectedYear}
@@ -81,13 +81,13 @@ export const EngagementsPage: React.FC<EngagementsPageProps> = ({ subSection }) 
       <section id="talks" className="space-y-4">
         <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Mic className="w-5 h-5 text-red-900" />
-            <h2 className="font-serif text-2xl text-slate-900">Invited Talks & Lectures ({filteredTalks.length})</h2>
+            <Mic className="w-5 h-5 text-red-900 shrink-0" />
+            <h2 className="font-serif text-xl sm:text-2xl text-slate-900">Invited Talks & Lectures ({filteredTalks.length})</h2>
           </div>
         </div>
 
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-          <table className="w-full text-left text-xs text-slate-700">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[540px]">
             <thead className="bg-slate-50 text-slate-900 border-b border-slate-200 font-mono text-[11px] uppercase">
               <tr>
                 <th className="py-3 px-4 w-28">Date</th>
@@ -122,13 +122,13 @@ export const EngagementsPage: React.FC<EngagementsPageProps> = ({ subSection }) 
       <section id="conferences" className="space-y-4">
         <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-red-900" />
-            <h2 className="font-serif text-2xl text-slate-900">Conferences & Seminars – Papers Presented ({filteredConferences.length})</h2>
+            <BookOpen className="w-5 h-5 text-red-900 shrink-0" />
+            <h2 className="font-serif text-xl sm:text-2xl text-slate-900">Conferences & Seminars ({filteredConferences.length})</h2>
           </div>
         </div>
 
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-          <table className="w-full text-left text-xs text-slate-700">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[540px]">
             <thead className="bg-slate-50 text-slate-900 border-b border-slate-200 font-mono text-[11px] uppercase">
               <tr>
                 <th className="py-3 px-4 w-28">Date</th>
@@ -163,13 +163,13 @@ export const EngagementsPage: React.FC<EngagementsPageProps> = ({ subSection }) 
       <section id="session-chair" className="space-y-4">
         <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Award className="w-5 h-5 text-red-900" />
-            <h2 className="font-serif text-2xl text-slate-900">Session Chair Roles ({filteredChairs.length})</h2>
+            <Award className="w-5 h-5 text-red-900 shrink-0" />
+            <h2 className="font-serif text-xl sm:text-2xl text-slate-900">Session Chair Roles ({filteredChairs.length})</h2>
           </div>
         </div>
 
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-          <table className="w-full text-left text-xs text-slate-700">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[500px]">
             <thead className="bg-slate-50 text-slate-900 border-b border-slate-200 font-mono text-[11px] uppercase">
               <tr>
                 <th className="py-3 px-4 w-28">Date</th>
@@ -202,13 +202,13 @@ export const EngagementsPage: React.FC<EngagementsPageProps> = ({ subSection }) 
       <section id="fdp" className="space-y-4">
         <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Users className="w-5 h-5 text-red-900" />
-            <h2 className="font-serif text-2xl text-slate-900">Faculty Development & Training Attended ({filteredFdp.length})</h2>
+            <Users className="w-5 h-5 text-red-900 shrink-0" />
+            <h2 className="font-serif text-xl sm:text-2xl text-slate-900">Faculty Development ({filteredFdp.length})</h2>
           </div>
         </div>
 
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-          <table className="w-full text-left text-xs text-slate-700">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[600px]">
             <thead className="bg-slate-50 text-slate-900 border-b border-slate-200 font-mono text-[11px] uppercase">
               <tr>
                 <th className="py-3 px-4 w-28">Date</th>
